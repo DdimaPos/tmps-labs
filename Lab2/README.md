@@ -442,15 +442,15 @@ src/
 
 ```
 ======================================================================
-🍔 FAST FOOD AGGREGATOR SYSTEM - Lab 2: Structural Patterns 🍔
+FAST FOOD AGGREGATOR SYSTEM - Lab 2: Structural Patterns 🍔
 ======================================================================
 
-📋 DEMO 1: FACADE PATTERN
+DEMO 1: FACADE PATTERN
 ----------------------------------------------------------------------
-✅ Ordered: BigMac from McDonalds with Beef - Ingredients: lettuce, special sauce...
-💰 Price: $5.99
+Ordered: BigMac from McDonalds with Beef - Ingredients: lettuce, special sauce...
+Price: $5.99
 
-🎨 DEMO 2: DECORATOR PATTERN
+DEMO 2: DECORATOR PATTERN
 ----------------------------------------------------------------------
 Base burger: BigMac from McDonalds with Beef...
 Price: $5.99
@@ -462,16 +462,16 @@ Price: $5.99
 + Swiss Cheese: ...+Extra Bacon, +Fresh Avocado, +Premium Swiss Cheese
   Price: $10.49
 
-🌳 DEMO 3: COMPOSITE PATTERN
+DEMO 3: COMPOSITE PATTERN
 ----------------------------------------------------------------------
-📦 Premium BigMac Meal [BigMac..., Large Fries, Large Coke]
-💰 Total Price: $11.97
-📊 Item Count: 3
+Premium BigMac Meal [BigMac..., Large Fries, Large Coke]
+Total Price: $11.97
+Item Count: 3
 
-🎭 DEMO 5: NESTED COMPOSITES
+DEMO 5: NESTED COMPOSITES
 ----------------------------------------------------------------------
-👨‍👩‍👧‍👦 Family Bundle [Value Meal [...], Value Meal [...], Large Fries]
-💰 Total: $25.93
+Family Bundle [Value Meal [...], Value Meal [...], Large Fries]
+Total: $25.93
 ```
 
 ### Key Observations
@@ -580,18 +580,3 @@ node dist/client/client.js
 
 ### Expected Output
 The application will demonstrate all three structural patterns with detailed logging, pricing calculations, and pattern interactions.
-
----
-
-## References
-
-- **Design Patterns: Elements of Reusable Object-Oriented Software** - Gang of Four
-- **Refactoring.Guru** - Design Patterns: https://refactoring.guru/design-patterns
-- **Head First Design Patterns** - Freeman & Robson
-- **Clean Architecture** - Robert C. Martin (Uncle Bob)
-
----
-
-**Repository**: https://github.com/DdimaPos/tmps-labs
-**Lab 1 Report**: `README.md` (Creational Patterns)
-**Lab 2 Report**: `LAB2_REPORT.md` (Structural Patterns)

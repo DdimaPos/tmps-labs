@@ -9,9 +9,9 @@ import { Fries } from "../domain/models/Fries";
 import { Drink } from "../domain/models/Drink";
 
 /**
- * - Facade (FastFoodFacade) - Simplifies ordering workflow
- * - Decorator (BaconDecorator, etc.) - Dynamically adds premium toppings
- * - Composite (MealCombo) - Creates meal combos as tree structures
+ * - facade (FastFoodFacade) - simplifies ordering workflow
+ * - decorator (BaconDecorator, etc.) - dynamically adds premium toppings
+ * - composite (MealCombo) - creates meal combos as tree structures
  */
 class Application {
   public static main() {
@@ -23,92 +23,77 @@ class Application {
 
     const facade = new FastFoodFacade();
 
-    // ========================================================================
     // 1: FACADE PATTERN - Simplified Ordering
-    // ========================================================================
-    console.log("\n 1: FACADE PATTERN - Simplified Ordering");
-    console.log("-".repeat(70));
+    // console.log("\n 1: FACADE PATTERN - Simplified Ordering");
+    // console.log("-".repeat(70));
+    //
+    // const standardBurger = facade.orderStandardBurger("McDonalds");
+    // console.log(`Ordered: ${standardBurger.getDescription()}`);
+    // console.log(`Price: $${standardBurger.getPrice().toFixed(2)}`);
+    // console.log();
+    //
+    // // custom burger with extra ingredients
+    // const customBurger = facade.orderCustomBurger("KFC", [
+    //   "extra cheese",
+    //   "jalapeños",
+    // ]);
+    // console.log(`Ordered: ${customBurger.getDescription()}`);
+    // console.log(`Price: $${customBurger.getPrice().toFixed(2)}`);
+    // console.log();
 
-    const standardBurger = facade.orderStandardBurger("McDonalds");
-    console.log(`Ordered: ${standardBurger.getDescription()}`);
-    console.log(`Price: $${standardBurger.getPrice().toFixed(2)}`);
-    console.log();
-
-    // Custom burger with extra ingredients
-    const customBurger = facade.orderCustomBurger("KFC", [
-      "extra cheese",
-      "jalapeños",
-    ]);
-    console.log(`Ordered: ${customBurger.getDescription()}`);
-    console.log(`Price: $${customBurger.getPrice().toFixed(2)}`);
-    console.log();
-
-    // Preset burger using Director
-    const veganBurger = facade.orderPresetBurger("McDonalds", "vegan");
-    console.log(`Ordered: ${veganBurger.getDescription()}`);
-    console.log(`Price: $${veganBurger.getPrice().toFixed(2)}`);
-
-    // ========================================================================
     // DEMO 2: DECORATOR PATTERN - Premium Toppings
-    // ========================================================================
-    console.log("\n\n2: DECORATOR PATTERN - Premium Toppings");
-    console.log("-".repeat(70));
-    console.log("Add premium extras dynamically without modifying burger classes");
-    console.log();
+    // console.log("\n\n2: DECORATOR PATTERN - Premium Toppings");
+    // console.log("-".repeat(70));
+    // console.log("Add premium extras dynamically without modifying burger classes");
+    // console.log();
+    //
+    // // start with a standard burger
+    // let premiumBurger: MenuItem = facade.orderStandardBurger("McDonalds");
+    // console.log(`Base burger: ${premiumBurger.getDescription()}`);
+    // console.log(`Price: $${premiumBurger.getPrice().toFixed(2)}`);
+    // console.log();
+    //
+    // // Wrap it with decorators - each adding price and description
+    // console.log("Adding premium toppings...");
+    // premiumBurger = new BaconDecorator(premiumBurger);
+    // console.log(`+ Bacon: ${premiumBurger.getDescription()}`);
+    // console.log(`  Price: $${premiumBurger.getPrice().toFixed(2)}`);
+    //
+    // // premiumBurger = new PremiumCheeseDecorator(premiumBurger, "Swiss");
+    // // console.log(`+ Swiss Cheese: ${premiumBurger.getDescription()}`);
+    // // console.log(`  Price: $${premiumBurger.getPrice().toFixed(2)}`);
+    // // console.log();
+    //
+    // console.log("  Final Premium Burger:");
+    // console.log(`   ${premiumBurger.getDescription()}`);
+    // console.log(`   Total: $${premiumBurger.getPrice().toFixed(2)}`);
 
-    // Start with a standard burger
-    let premiumBurger: MenuItem = facade.orderStandardBurger("McDonalds");
-    console.log(`Base burger: ${premiumBurger.getDescription()}`);
-    console.log(`Price: $${premiumBurger.getPrice().toFixed(2)}`);
-    console.log();
-
-    // Wrap it with decorators - each adding price and description
-    console.log("Adding premium toppings...");
-    premiumBurger = new BaconDecorator(premiumBurger);
-    console.log(`+ Bacon: ${premiumBurger.getDescription()}`);
-    console.log(`  Price: $${premiumBurger.getPrice().toFixed(2)}`);
-
-    premiumBurger = new AvocadoDecorator(premiumBurger);
-    console.log(`+ Avocado: ${premiumBurger.getDescription()}`);
-    console.log(`  Price: $${premiumBurger.getPrice().toFixed(2)}`);
-
-    premiumBurger = new PremiumCheeseDecorator(premiumBurger, "Swiss");
-    console.log(`+ Swiss Cheese: ${premiumBurger.getDescription()}`);
-    console.log(`  Price: $${premiumBurger.getPrice().toFixed(2)}`);
-    console.log();
-
-    console.log("  Final Premium Burger:");
-    console.log(`   ${premiumBurger.getDescription()}`);
-    console.log(`   💰 Total: $${premiumBurger.getPrice().toFixed(2)}`);
-
-    // ========================================================================
-    // DEMO 3: COMPOSITE PATTERN - Meal Combos
-    // ========================================================================
-    console.log("\n\nDEMO 3: COMPOSITE PATTERN - Meal Combos");
-    console.log("-".repeat(70));
-    console.log("Treat individual items and combos uniformly");
-    console.log();
-
-    // Create a combo manually to show the pattern
-    const manualCombo = new MealCombo("Premium BigMac Meal");
-
-    // Add items one by one - demonstrating uniform interface
-    const bigMac = facade.orderStandardBurger("McDonalds");
-    manualCombo.add(bigMac);
-    manualCombo.add(new Fries("Large", 3.49));
-    manualCombo.add(new Drink("Coke", "Large"));
-
-    console.log("Manual combo creation:");
-    console.log(`${manualCombo.getDescription()}`);
-    console.log(`Total Price: $${manualCombo.getPrice().toFixed(2)}`);
-    console.log(`Item Count: ${manualCombo.getItemCount()}`);
-    console.log();
-
-    // Use Facade to create a combo quickly
-    const quickCombo = facade.orderQuickMeal("KFC", true, true);
-    console.log("Quick combo via Facade:");
-    console.log(`${quickCombo.getDescription()}`);
-    console.log(`Total Price: $${quickCombo.getPrice().toFixed(2)}`);
+    // // DEMO 3: COMPOSITE PATTERN - Meal Combos
+    // console.log("\n\nDEMO 3: COMPOSITE PATTERN - Meal Combos");
+    // console.log("-".repeat(70));
+    // console.log("Treat individual items and combos uniformly");
+    // console.log();
+    //
+    // // create a combo manually to show the pattern
+    // const manualCombo = new MealCombo("Premium BigMac Meal");
+    //
+    // // add items one by one - demonstrating uniform interface
+    // const bigMac = facade.orderStandardBurger("McDonalds");
+    // manualCombo.add(bigMac);
+    // manualCombo.add(new Fries("Large", 3.49));
+    // manualCombo.add(new Drink("Coke", "Large"));
+    //
+    // console.log("Manual combo creation:");
+    // console.log(`${manualCombo.getDescription()}`);
+    // console.log(`Total Price: $${manualCombo.getPrice().toFixed(2)}`);
+    // console.log(`Item Count: ${manualCombo.getItemCount()}`);
+    // console.log();
+    //
+    // // Use Facade to create a combo quickly
+    // const quickCombo = facade.orderQuickMeal("KFC", true, true);
+    // console.log("Quick combo via Facade:");
+    // console.log(`${quickCombo.getDescription()}`);
+    // console.log(`Total Price: $${quickCombo.getPrice().toFixed(2)}`);
 
     // ========================================================================
     // DEMO 4: ALL PATTERNS COMBINED - Ultimate Order
@@ -139,7 +124,7 @@ class Application {
     console.log(`     Total: $${ultimateCombo.getPrice().toFixed(2)}`);
     console.log();
 
-    // Show how you can add more items to the combo
+    // you can add more items to the combo
     const dessert = facade.orderPresetBurger("McDonalds", "classic");
     ultimateCombo.add(dessert);
     console.log("Added dessert burger to combo:");
@@ -180,34 +165,10 @@ class Application {
     console.log(`     Total: $${familyOrder.getPrice().toFixed(2)}`);
     console.log(`     Top-level items: ${familyOrder.getItemCount()}`);
 
-    console.log("\n\n" + "=".repeat(70));
-    console.log("  STRUCTURAL PATTERNS SUMMARY");
-    console.log("=".repeat(70));
-    console.log(`
-1️⃣  FACADE PATTERN:
-    ✓ Simplified complex ordering workflow
-    ✓ Single entry point: FastFoodFacade
-    ✓ Hides Factory, Builder, Director, Prototype complexity
-
-2️⃣  DECORATOR PATTERN:
-    ✓ Dynamically added premium toppings
-    ✓ Stackable decorators (bacon + avocado + cheese)
-    ✓ No class explosion - flexible and extensible
-
-3️⃣  COMPOSITE PATTERN:
-    ✓ Created meal combos as tree structures
-    ✓ Uniform interface for items and combos
-    ✓ Recursive price calculation and descriptions
-    ✓ Supports nesting (combos within combos)
-`);
-
     console.log("=".repeat(70));
     console.log("\n FULL SYSTEM LOG HISTORY:");
     console.log("=".repeat(70));
     logger.seeLogs();
-
-    console.log("\n All structural patterns demonstrated successfully!");
-    console.log("=".repeat(70) + "\n");
   }
 }
 
